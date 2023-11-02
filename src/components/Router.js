@@ -12,17 +12,17 @@ const AppRouter = (props) =>
 		<Router>
 			{isLoggedIn && <Navigation/> }
 			<Routes>
+				<>
 				{isLoggedIn ?(
 					<>
-						<Route path="/" element={<Home />} />
-						<Route path="/Profile" element={<Profile />} />
+						<Route exact path="/" element={<Home />} />
+						<Route exact path="/Profile" element={<Profile />} />
 					</>
 				) : (
 					<Route path="/" element={<Auth />} />
 				)}
-			</Routes>
-			<Routes>
 				<Route path="*" element={<Navigate replace to="/" />} />
+				</>
 			</Routes>
 		</Router>
 	);
