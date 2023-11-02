@@ -44,7 +44,7 @@ const Auth = () => {
 				data = await authService.createUserWithEmailAndPassword(email, password);
 			}
 			else {
-				data = await authService.createUserWithEmailAndPassword(email, password);
+				data = await authService.signInWithEmailAndPassword(email, password);
 			}
 			console.log(data);
 		}
