@@ -1,4 +1,4 @@
-import {HashRouter as Router, Navigate, Route, Routes} from "react-router-dom";
+import {HashRouter as Router, Route, Routes} from "react-router-dom";
 import Auth from "routes/Auth"
 import Home from "routes/Home"
 import Profile from "routes/Profile";
@@ -19,7 +19,8 @@ const AppRouter = (props) =>
 				)}
 			</Routes>
 			<Routes>
-				<Route exact path="/Profile" element={<Navigate replace to="/Profile" />} />
+				<Route exact path="/Profile" element={<Profile />} />
+
 			</Routes>
 		</Router>
 	);
