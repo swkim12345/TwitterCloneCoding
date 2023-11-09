@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Nweet from "components/Nweet"
 
 const Profile = ({refreshUser, userObj}) => {
-	//const [nweets, setNweets] = useState([]);
+	const [nweets, setNweets] = useState([]);
 	const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 	const onLogOutClick = () => authService.signOut();
 
@@ -23,23 +23,23 @@ const Profile = ({refreshUser, userObj}) => {
 	};
 
 	
-	//const getMyNweets = async () => {
-	//	const nweet = await dbService
-	//	.collection("nweets")
-	//	.where("creatorId", "==", userObj.uid)
-	//	.orderBy("createdAt", "asc")
-	//	.get();
+	const getMyNweets = async () => {
+		const nweet = await dbService
+		.collection("nweets")
+		.where("creatorId", "==", userObj.uid)
+		.orderBy("createdAt", "asc")
+		.get();
 
-	//	const newArray = nweet.docs.map((doc) => ({
-	//		id : doc.id, 
-	//		...doc.data(),
-	//	}));
-	//	setNweets(newArray);
-	//};
+		const newArray = nweet.docs.map((doc) => ({
+			id : doc.id, 
+			...doc.data(),
+		}));
+		setNweets(newArray);
+	};
 
-	//useEffect(() => {
-	//	getMyNweets();
-	//}, []);
+	useEffect(() => {
+		getMyNweets();
+	}, []);
 
 	return (
 		<>
@@ -54,11 +54,11 @@ const Profile = ({refreshUser, userObj}) => {
 			<div>
 				<button onClick={onLogOutClick}>Log Out</button>
 			</div>
-			{/*<div>
+			<div>
 				{nweets.map((nweet) => (
 					<Nweet key={nweet.id} nweetObj={nweet} isOwner={nweet.creatorId === userObj.uid} />
 				))}
-			</div>*/}
+			</div>
 		</>
 	);
 };
