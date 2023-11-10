@@ -1,5 +1,11 @@
 import {authService, firebaseInstance} from "fbase";
 import AuthForm from "components/AuthForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faXTwitter,
+	faGoogle,
+	faGithub,
+} from "@fortawesome/free-brands-svg-icons"
 
 const Auth = () => {
 	const onSocialClick = async (event) => {
@@ -13,15 +19,25 @@ const Auth = () => {
 		else if (name === "Github"){
 			provider = new firebaseInstance.auth.GithubAuthProvider();
 		}
-		const data = await authService.signInWithPopup(provider);
+		await authService.signInWithPopup(provider);
 	}
 
  	return (
-		<div>
+		<div className="authContainer">
+			<FontAwesomeIcon
+				icon={faXTwitter}
+				color={"#FFFFFF"}
+				size="3x"
+				style={{marginBottom : 30}}
+			/>
 			<AuthForm/>
-			<div>
-				<button onClick={onSocialClick} name="Google">Continue with Google</button>
-				<button onClick={onSocialClick} name="Github">Continue with Github</button>
+			<div className="authBtns">
+				<button onClick={onSocialClick} name="Google" className="authBtn">
+					Continue with Google <FontAwesomeIcon icon={faGoogle} />
+				</button>
+				<button onClick={onSocialClick} name="Github" className="authBtn">
+					Continue with Github <FontAwesomeIcon icon={faGithub} />
+				</button>
 			</div>
 		</div>
 	);
