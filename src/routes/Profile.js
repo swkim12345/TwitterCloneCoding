@@ -63,9 +63,9 @@ const Profile = ({refreshUser, userObj}) => {
 			<span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
 				Log Out
 			</span>
-			<div>
+			<div style={{marginTop : 30}}>
 				{nweets.map((nweet) => (
-					<Nweet key={nweet.id} nweetObj={nweet} isOwner={nweet.creatorId === userObj.uid} />
+					<Nweet key={nweet.id} nweetObj={nweet} isOwner={nweet.creatorId === userObj.uid}/>
 				))}
 			</div>
 		</div>

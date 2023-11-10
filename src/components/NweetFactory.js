@@ -66,12 +66,14 @@ const NweetFactory = ({userObj}) => {
 		<form onSubmit={onSubmit} className="factoryForm">
 			<div className="factoryInput__container">
 				<input
+				className="factoryInput__input"
 				value={nweet}
 				onChange={onChange}
 				type="text"
 				placeholder="What's on your mind?"
 				maxLength={120}
 				/>
+				<input type="submit" value="&rarr;" className="factoryInput__arrow" />
 			</div>
 			<label htmlFor="attach-file" className="factoryInput__label">
 				<span>Add photes</span>
@@ -86,8 +88,8 @@ const NweetFactory = ({userObj}) => {
 					opacity: 0,
 				}}
 			/>
-			<input type="submit" value="Nweet" />
-			{attachment && (<div>
+			{attachment && (
+			<div className="factoryForm__attachment">
 				<img 
 					src={attachment} 
 					alt="TweetImage"
